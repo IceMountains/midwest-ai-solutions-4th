@@ -1,4 +1,4 @@
-alert('script.js loaded!');
+// Script loaded successfully
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -121,50 +121,37 @@ function typeWriter(element, text, speed = 100) {
 //     }
 // });
 
-// Mobile menu toggle (if you want to add a mobile menu later)
-function createMobileMenu() {
-    const navbar = document.querySelector('.navbar');
-    const navMenu = document.querySelector('.nav-menu');
+// Mobile menu toggle
+function initMobileMenu() {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
     
-    // Create hamburger button
-    const hamburger = document.createElement('button');
-    hamburger.className = 'hamburger';
-    hamburger.innerHTML = '☰';
-    hamburger.style.cssText = `
-        display: none;
-        background: none;
-        border: none;
-        color: white;
-        font-size: 1.5rem;
-        cursor: pointer;
-        padding: 0.5rem;
-    `;
-    
-    // Add hamburger to navbar
-    navbar.querySelector('.nav-container').appendChild(hamburger);
-    
-    // Mobile menu functionality
-    hamburger.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-    });
-    
-    // Show hamburger on mobile
-    function checkMobile() {
-        if (window.innerWidth <= 768) {
-            hamburger.style.display = 'block';
-            navMenu.style.display = 'none';
-        } else {
-            hamburger.style.display = 'none';
-            navMenu.style.display = 'flex';
-        }
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
     }
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
 }
 
 // Initialize mobile menu
-createMobileMenu();
+document.addEventListener('DOMContentLoaded', initMobileMenu);
 
 // Add some particle effects (optional)
 function createParticles() {
