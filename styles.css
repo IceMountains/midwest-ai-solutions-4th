@@ -893,6 +893,20 @@ html {
 /* Hamburger Menu */
 .hamburger {
     display: none;
+    position: relative;
+    z-index: 1001;
+}
+
+/* Force hamburger to show on mobile for testing */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block !important;
+        background: rgba(0, 212, 255, 0.1);
+        border: 1px solid rgba(0, 212, 255, 0.3);
+        border-radius: 6px;
+        padding: 8px;
+        margin-left: 10px;
+    }
 }
 
 .bar {
@@ -904,6 +918,25 @@ html {
     background: linear-gradient(45deg, #00d4ff, #ff00ff);
     border-radius: 2px;
     box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+
+/* Make bars more visible on mobile */
+@media (max-width: 768px) {
+    .bar {
+        width: 28px;
+        height: 4px;
+        margin: 4px auto;
+        box-shadow: 0 0 12px rgba(0, 212, 255, 0.8);
+    }
+    
+    .mobile-menu-text {
+        font-size: 10px;
+        color: #00d4ff;
+        text-align: center;
+        margin-top: 4px;
+        font-weight: bold;
+        text-shadow: 0 0 8px rgba(0, 212, 255, 0.8);
+    }
 }
 
 .ai-tools-section {
