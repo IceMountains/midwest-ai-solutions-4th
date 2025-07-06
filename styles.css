@@ -1184,3 +1184,15 @@ html {
         display: none !important;
     }
 } 
+
+@media (max-width: 768px) {
+    .hero-slider,
+    .hero-visual,
+    .hero-slide,
+    #productivity-num-html,
+    #savings-num-html,
+    #efficiency-num-html,
+    #traffic-num-html {
+        display: none !important;
+    }
+} 
