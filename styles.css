@@ -670,6 +670,19 @@ textarea.form-input {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    /* Disable animations on mobile */
+    * {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+    }
+    
+    /* Disable hover effects on mobile */
+    *:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+    
     .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
@@ -787,6 +800,23 @@ textarea.form-input {
     }
     .hero-slide img {
         height: 100%;
+    }
+    
+    /* Disable slideshow animations on mobile */
+    .hero-slide {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    .hero-slide.active {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    /* Disable glow line animation on mobile */
+    .glow-line {
+        animation: none !important;
+        opacity: 0.5;
     }
 }
 

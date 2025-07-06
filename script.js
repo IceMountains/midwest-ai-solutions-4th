@@ -25,13 +25,24 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Intersection Observer for fade-in animations
+// Intersection Observer for fade-in animations (disabled on mobile)
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
+    // Check if we're on mobile
+    if (window.innerWidth <= 768) {
+        // On mobile, immediately show all elements without animation
+        entries.forEach(entry => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'none';
+        });
+        return;
+    }
+    
+    // Desktop animations
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
@@ -45,20 +56,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const animateElements = document.querySelectorAll('.feature-card, .about-content, .contact-content, .section-header');
     
     animateElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        // Check if we're on mobile
+        if (window.innerWidth <= 768) {
+            // On mobile, show immediately without animation
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+            el.style.transition = 'none';
+        } else {
+            // Desktop animations
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        }
         observer.observe(el);
     });
 });
 
-// Button hover effects
+// Button hover effects (disabled on mobile)
 document.querySelectorAll('.btn').forEach(button => {
     button.addEventListener('mouseenter', function() {
+        // Disable on mobile
+        if (window.innerWidth <= 768) return;
         this.style.transform = 'translateY(-2px) scale(1.02)';
     });
     
     button.addEventListener('mouseleave', function() {
+        // Disable on mobile
+        if (window.innerWidth <= 768) return;
         this.style.transform = 'translateY(0) scale(1)';
     });
 });
@@ -86,13 +110,17 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Glow effect for feature cards
+// Glow effect for feature cards (disabled on mobile)
 document.querySelectorAll('.feature-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
+        // Disable on mobile
+        if (window.innerWidth <= 768) return;
         this.style.boxShadow = '0 15px 40px rgba(0, 212, 255, 0.3)';
     });
     
     card.addEventListener('mouseleave', function() {
+        // Disable on mobile
+        if (window.innerWidth <= 768) return;
         this.style.boxShadow = '0 10px 30px rgba(0, 212, 255, 0.2)';
     });
 });
@@ -272,6 +300,18 @@ document.addEventListener('DOMContentLoaded', function () {
     let autoPlayTimeout;
     const SLIDE_DURATION = 4000; // ms (animation + pause, was 2200)
 
+    // Check if we're on mobile
+    if (window.innerWidth <= 768) {
+        // On mobile, show only the first slide without animation
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === 0);
+            slide.style.opacity = i === 0 ? '1' : '0';
+            slide.style.transform = 'none';
+        });
+        // Disable slideshow on mobile
+        return;
+    }
+
     function showSlide(idx) {
         slides.forEach((slide, i) => {
             slide.classList.toggle('active', i === idx);
@@ -290,12 +330,17 @@ document.addEventListener('DOMContentLoaded', function () {
         autoPlayTimeout = setTimeout(nextSlide, SLIDE_DURATION);
     }
 
-    // Init
+    // Init (only on desktop)
     showSlide(0);
     scheduleNext();
 
     // --- Hero Metric Animation Logic ---
     function animateMetricSlide(idx) {
+        // Disable animations on mobile
+        if (window.innerWidth <= 768) {
+            return;
+        }
+        
         console.log('animateMetricSlide called with idx:', idx);
         const activeSlide = document.querySelector('.hero-slide.active');
         console.log('activeSlide found:', !!activeSlide);
