@@ -701,24 +701,53 @@ textarea.form-input {
         left: -100%;
         top: 80px;
         flex-direction: column;
-        background-color: rgba(10, 10, 10, 0.95);
+        background-color: rgba(10, 10, 10, 0.98);
         backdrop-filter: blur(10px);
         width: 100%;
         text-align: center;
         transition: 0.3s;
-        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.3);
         padding: 2rem 0;
         gap: 1rem;
         z-index: 1000;
+        border-top: 1px solid rgba(0, 212, 255, 0.2);
     }
 
     .nav-menu.active {
         left: 0;
     }
+    
+    .nav-menu .nav-link {
+        padding: 12px 20px;
+        font-size: 1.1rem;
+        border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .nav-menu .nav-link:hover {
+        background-color: rgba(0, 212, 255, 0.1);
+        color: #00d4ff;
+    }
+    
+    .nav-menu .cta-nav-btn {
+        margin: 16px auto 0 auto;
+        padding: 12px 24px;
+        font-size: 1.1rem;
+        width: 80%;
+        max-width: 200px;
+    }
 
     .hamburger {
         display: block;
         cursor: pointer;
+        padding: 8px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+        z-index: 1001;
+    }
+    
+    .hamburger:hover {
+        background-color: rgba(0, 212, 255, 0.1);
     }
 
     .hamburger.active .bar:nth-child(2) {
@@ -874,6 +903,7 @@ html {
     transition: all 0.3s ease-in-out;
     background: linear-gradient(45deg, #00d4ff, #ff00ff);
     border-radius: 2px;
+    box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
 }
 
 .ai-tools-section {
