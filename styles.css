@@ -1186,13 +1186,20 @@ html {
 } 
 
 @media (max-width: 768px) {
-    .hero-slider,
-    .hero-visual,
-    .hero-slide,
-    #productivity-num-html,
-    #savings-num-html,
-    #efficiency-num-html,
-    #traffic-num-html {
+    .hero .hero-slider,
+    .hero .hero-visual,
+    .hero .hero-slide,
+    .hero #productivity-num-html,
+    .hero #savings-num-html,
+    .hero #efficiency-num-html,
+    .hero #traffic-num-html {
         display: none !important;
+        height: 0 !important;
+        min-height: 0 !important;
+        max-height: 0 !important;
+        overflow: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
     }
 } 
