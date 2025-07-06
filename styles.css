@@ -623,6 +623,23 @@ textarea.form-input {
     min-height: 120px;
 }
 
+/* Select dropdown styling */
+.form-input option {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 8px 12px;
+}
+
+.form-input option:hover {
+    background-color: #00d4ff;
+    color: #000000;
+}
+
+.form-input option:checked {
+    background-color: #00d4ff;
+    color: #000000;
+}
+
 /* Footer */
 .footer {
     background: rgba(0, 0, 0, 0.5);
