@@ -52,6 +52,15 @@ body {
 
 .logo-link:hover {
     transform: scale(1.05);
+    text-decoration: none;
+}
+
+.logo-link:visited {
+    text-decoration: none;
+}
+
+.logo-link:active {
+    text-decoration: none;
 }
 
 .logo-container {
